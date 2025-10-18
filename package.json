@@ -1,12 +1,24 @@
 {
   "name": "neophyte-stores",
   "private": true,
+  "resolutions": {
+    "webpack": "5",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3"
+  },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "npx patch-package",
     "build": "turbo run build",
+
     "dev": "turbo run dev",
+    "dev:server": "turbo run server#dev --env-mode=loose",
+    "dev:client": "turbo run client#dev --env-mode=loose",
+    "dev:strapi": "turbo run strapi#dev --env-mode=loose",
+
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "tsc --noEmit"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
